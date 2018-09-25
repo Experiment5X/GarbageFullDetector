@@ -1,0 +1,53 @@
+#icon-image {
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-image: url('/images/garbage.svg');
+    vertical-align: middle;
+    margin-bottom: 0.6rem;
+}
+
+#addNumberButton {
+    border: none;
+    background: var(--light);
+}
+
+#garbage-image {
+    width: 128px;
+    height: 128px;
+    display: block;
+    margin: 1rem auto;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#title {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+#sub-title {
+    margin-bottom: 2rem;
+}
+
+.garbage-status {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+
+.garbage-status-time {
+    font-size: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    color: var(--light);
+}
+
+#garbage-full {
+    color: var(--danger);
+}
+
+#garbage-not-full {
+    color: var(--success);
+}

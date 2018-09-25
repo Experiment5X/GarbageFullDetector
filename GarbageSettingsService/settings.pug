@@ -1,0 +1,97 @@
+link(
+    rel='stylesheet', 
+    href='style.css'
+)
+link(
+    rel='stylesheet', 
+    href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', 
+    integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm',
+    crossorigin='anonymous'
+)
+link(
+    rel='stylesheet', 
+    href='https://use.fontawesome.com/releases/v5.2.0/css/all.css', 
+    integrity='sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ',
+    crossorigin='anonymous'
+)
+link(
+    rel='stylesheet',
+    href='https://bootswatch.com/4/superhero/bootstrap.min.css'
+)
+link(
+    rel='icon',
+    type='image/png',
+    href='images/favicon.png'
+)
+
+script(
+    src='https://code.jquery.com/jquery-3.2.1.min.js'
+)
+script(
+    src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', 
+    integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q',
+    crossorigin='anonymous'
+)
+script(
+    src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', 
+    integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl',
+    crossorigin='anonymous'
+)
+script(
+    src='settings.js'
+)
+
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+// Image Source
+// https://www.iconfinder.com/icons/2305600/bin_can_delete_garbage_recycle_remove_trash_icon
+
+.container
+    .row
+        .col-sm-4
+        .col-sm-4
+            h1.text-center#title 
+                span#icon-image
+                |Settings
+            h6.text-center#sub-title Garbage Detector Configuration
+            img(src='/images/garbage_can.png')#garbage-image
+            if isGarbageFull
+                p.text-center.garbage-status#garbage-full Full
+            else
+                p.text-center.garbage-status#garbage-not-full Not Full
+
+            p.text-center.garbage-status-time #{imageTimestamp}
+
+            form(action='/', method='post')
+                .form-group
+                    label(for='timeToNotify') Notification Delay
+                    .input-group.m2.mt-ut 
+                        input(type='number', 
+                            name='timeToNotify',
+                            value=timeToNotify,
+                            placeholder='0', 
+                            aria-label='Minutes' 
+                        ).form-control#timeToNotify
+                        .input-group-append
+                            span.input-group-text minutes
+
+                .form-group
+                    label(for='numbersToNotify') Notify People
+                    ul.list-group#numberList
+                    .input-group.mt-2
+                        .input-group-prepend
+                            span.input-group-text 
+                                i.fas.fa-phone
+                        input(type='tel', 
+                            placeholder='+15550001234', 
+                            aria-label='Phone Number', 
+                            aria-describedby='basic-addon1'
+                        ).form-control#phoneNumber
+                        .input-group-append
+                            button(type='button').btn.btn-success#addNumberButton +
+
+                    input(type='hidden', name='numbersToNotify', value=numbersToNotify).form-control#numbersToNotify
+
+                button(type='submit').btn.btn-primary.m-auto.d-block Save Settings
+
+        .col-sm-3
